@@ -1,4 +1,7 @@
-class ContactTrack(object):
+from ..cw_model import CWModel
+
+
+class ContactTrack(CWModel):
     def __init__(self, json_dict=None):
         self.id = None  # (Integer)
         self.trackId = None  # *(Integer)
@@ -13,10 +16,4 @@ class ContactTrack(object):
         self._info = None  # (Metadata)
 
         # initialize object with json dict
-        self.__dict__.update(json_dict)
-
-    def __repr__(self):
-        string = ''
-        for k, v in self.__dict__.items():
-            string = ''.join([string, '{}: {}\n'.format(k, v)])
-        return string
+        super().__init__(json_dict)
