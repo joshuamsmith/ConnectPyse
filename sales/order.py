@@ -1,0 +1,46 @@
+from ..cw_model import CWModel
+
+
+class Order(CWModel):
+
+    def __init__(self, json_dict=None):
+        self.id = None  # (Integer)
+        self.company = None  # *(CompanyReference)
+        self.contact = None  # (ContactReference)
+        self.phone = None  # (String)
+        self.phoneExt = None  # (String)
+        self.email = None  # (String)
+        self.site = None  # (SiteReference)
+        self.status = None  # *(OrderStatusReference)
+        self.opportunity = None  # (OpportunityReference)
+        self.orderDate = None  # (String)
+        self.dueDate = None  # (String)
+        self.billingTerms = None  # (BillingTermsReference)
+        self.taxCode = None  # (TaxCodeReference)
+        self.poNumber = None  # (String(50))
+        self.locationId = None  # (Integer)
+        self.businessUnitId = None  # (Integer)
+        self.salesRep = None  # *(MemberReference)
+        self.notes = None  # (String)
+        self.billClosedFlag = None  # (Boolean)
+        self.billShippedFlag = None  # (Boolean)
+        self.restrictDownpaymentFlag = None  # (Boolean)
+        self.description = None  # (String)
+        self.topCommentFlag = None  # (Boolean)
+        self.bottomCommentFlag = None  # (Boolean)
+        self.shipToCompany = None  # (CompanyReference)
+        self.shipToContact = None  # (ContactReference)
+        self.shipToSite = None  # (SiteReference)
+        self.billToCompany = None  # (CompanyReference)
+        self.billToContact = None  # (ContactReference)
+        self.billToSite = None  # (SiteReference)
+        self.productIds = None  # (Integer[])
+        self.documentIds = None  # (Integer[])
+        self.invoiceIds = None  # (Integer[])
+        self.configIds = None  # (Integer[])
+        self.total = None  # (Number)
+        self.taxTotal = None  # (Number)
+        self._info = None  # (Metadata)
+
+        # initialize object with json dict
+        super().__init__(json_dict)
