@@ -1,5 +1,7 @@
+from ..cw_model import CWModel
 
-class Agreement(object):
+
+class Agreement(CWModel):
 
     def __init__(self, json_dict=None):
         self.id = None  # (Integer)
@@ -73,12 +75,4 @@ class Agreement(object):
         self.periodType = None  # (Enum)
 
         # initialize object with json dict
-        self.__dict__.update(json_dict)
-
-    def __repr__(self):
-        string = None
-        string = ''.join('{}: {}\n'.format('Name',self.__dict__['name']))
-        return string
-
-
-
+        super().__init__(json_dict)
