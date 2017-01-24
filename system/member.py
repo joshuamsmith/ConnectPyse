@@ -1,4 +1,7 @@
-class Member(object):
+from ..cw_model import CWModel
+
+
+class Member(CWModel):
 
     def __init__(self, json_dict=None):
         self.adminFlag = None  # (Boolean)
@@ -90,10 +93,4 @@ class Member(object):
         self.System_Flag = None  # (Boolean)
 
         # initialize object with json dict
-        self.__dict__.update(json_dict)
-
-    def __repr__(self):
-        string = ''
-        for k, v in self.__dict__.items():
-            string = ''.join([string, '{}: {}\n'.format(k, v)])
-        return string
+        super().__init__(json_dict)
