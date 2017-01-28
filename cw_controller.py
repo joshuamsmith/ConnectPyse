@@ -4,7 +4,6 @@ import connectpyse
 
 
 class CWController(restapi.Client):
-
     def __init__(self):
         # self.module_url comes from child
         # self.module comes from child
@@ -21,29 +20,29 @@ class CWController(restapi.Client):
         for json in json_results:
             yield child(json)
 
-    def _create(self, the_item):  # TODO: Test
+    def _create(self, child, the_item):  # TODO: Test
         # Ideally take the_item and submit that as the user_data
         dict_post = {'name': the_item.name, 'company': the_item.company, 'type': the_item.type}
-        json_results = getattr(self, self.module).post(user_data=dict_post, user_headers=connectpyse.basic_auth)
-        return json_results
+        an_instance = child(getattr(self, self.module).post(user_data=dict_post, user_headers=connectpyse.basic_auth))
+        return an_instance
 
     def _get_count(self):
         json_results = getattr(self, self.module).get(the_id='count', user_headers=connectpyse.basic_auth)
         count = json_results['count']
         return count
 
-    def _get_by_id(self, child, company_id):
-        a_company = child(getattr(self, self.module).get(the_id=company_id, user_headers=connectpyse.basic_auth))
-        return a_company
+    def _get_by_id(self, child, item_id):
+        an_instance = child(getattr(self, self.module).get(the_id=item_id, user_headers=connectpyse.basic_auth))
+        return an_instance
 
     def _delete_by_id(self, item_id):
-        getattr(self, self.module).get(the_id=item_id, user_headers=connectpyse.basic_auth)
+        return getattr(self, self.module).delete(the_id=item_id, user_headers=connectpyse.basic_auth)
 
     def _replace(self, company_id):
         # copy code from _create once tested, use PUT verb
         pass
 
-    def _update(self, item_id, key, value):
+    def _update(self, child, item_id, key, value):
         # build PatchOperation dict
         patch_operation = [{
             'op': 'replace',
@@ -51,10 +50,9 @@ class CWController(restapi.Client):
             'value': value
         }]
         # call Patch method on API
-        json_results = getattr(self, self.module).patch(the_id=item_id, user_data=patch_operation,
-                                                        user_headers=connectpyse.basic_auth)
-        # return status code
-        return json_results
+        an_instance = child(getattr(self, self.module).patch(the_id=item_id, user_data=patch_operation,
+                                                             user_headers=connectpyse.basic_auth))
+        return an_instance
 
     def _merge(self, item_id, target_id):
         company_merge = [{
