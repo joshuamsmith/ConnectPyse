@@ -28,7 +28,7 @@ class CWController(restapi.Client):
         for json in json_results:
             yield self._class(json)
 
-    def _create(self, a_object):  # TODO: Test
+    def _create(self, a_object):
         # Ideally take the_item and submit that as the user_data
         try:
             clean_dict = {k: v for k, v in a_object.__dict__.items() if v}
@@ -52,9 +52,10 @@ class CWController(restapi.Client):
     def _delete_by_id(self, item_id):
         return getattr(self, self.module).delete(the_id=item_id, user_headers=connectpyse.basic_auth)
 
-    def _replace(self, company_id):  # TODO: test
-        # copy code from _create once tested, use PUT verb
-        pass
+    def _replace(self, item_id):  # TODO: test
+        an_instance = self._class(
+            getattr(self, self.module).put(the_id=item_id, user_data=clean_dict, user_headers=connectpyse.basic_auth))
+        return an_instance
 
     def _update(self, item_id, key, value):
         # build PatchOperation dict
@@ -68,10 +69,14 @@ class CWController(restapi.Client):
                                                                    user_headers=connectpyse.basic_auth))
         return an_instance
 
-    def _merge(self, item_id, target_id):  # TODO: test
-        company_merge = [{
-            'toCompanyId': target_id
-        }]
-        success_response = getattr(self, self.module).post(the_id=item_id, user_data=company_merge,
-                                                           user_headers=connectpyse.basic_auth)
-        return success_response
+    def _merge(self, a_object, target_id):  # TODO: test
+        # try:
+        #     clean_dict = {k: v for k, v in a_object.__dict__.items() if v}
+        # except Exception as e:
+        #     print(repr(e))
+        #     return False
+        # clean_dict['toCompanyId'] = target_id
+        # response = getattr(self, self.module).post(user_data=clean_dict, the_id='/'.join([str(a_object.id), 'merge']),
+        #                                            user_headers=connectpyse.basic_auth)
+        # return response
+        pass
