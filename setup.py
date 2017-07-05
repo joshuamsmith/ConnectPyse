@@ -7,7 +7,7 @@ def readme():
 
 
 setup(name='connectpyse',
-      version='0.1',
+      version='0.2',
       description='A ConnectWise API tool for the rest of us.',
       long_description=readme(),
       classifiers=[
@@ -22,7 +22,8 @@ setup(name='connectpyse',
       license='MIT',
       packages=['connectpyse'],
       install_requires=[
-          'restapi-client',
+          'requests',
+          'ujson'
       ],
       include_package_data=True,
       zip_safe=False)

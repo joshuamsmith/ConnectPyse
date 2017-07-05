@@ -1,0 +1,12 @@
+0.0
+---
+
+-  Initial version
+
+0.1
+---
+
+-  Hard labor. Mostly up and working with several modules completed.
+
+0.2----  Pickup it up again after several months
+. Brought the RestAPI library internal as it's a dead project on GitHub now and I've had to make several patches.
