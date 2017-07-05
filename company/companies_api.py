@@ -1,41 +1,36 @@
-import restapi
+from ..cw_controller import CWController
 # Class for /company/companies
-import connectpyse
 from connectpyse.company import company
 
 
-class CompaniesAPI(restapi.Client):
-
-    module_url = 'company'
-
+class CompaniesAPI(CWController):
     def __init__(self):
-        super(CompaniesAPI, self).__init__('{}/{}'.format(connectpyse.API_URL, CompaniesAPI.module_url))
+        self.module_url = 'company'
+        self.module = 'companies'
+        self._class = company.Company
+        super().__init__()  # instance gets passed to parent object
 
-    def get_companies(self, user_params={}):
-        json_results = self.companies.get(user_headers=connectpyse.basic_auth, user_params=user_params)
-        for json in json_results:
-            yield company.Company(json)
+    def get_companies(self):
+        return super()._get()
 
-    def create_company(self):
-        pass
+    def create_company(self, a_company):
+        return super()._create(a_company)
 
     def get_companies_count(self):
-        json_results = self.companies.get(the_id='count', user_headers=connectpyse.basic_auth)
-        count = json_results['count']
-        return count
+        return super()._get_count()
 
     def get_company_by_id(self, company_id):
-        a_company = company.Company(self.companies.get(the_id=company_id, user_headers=connectpyse.basic_auth))
-        return a_company
+        return super()._get_by_id(company_id)
 
-    def delete_company_by_id(self, company_id   ):
-        pass
+    def delete_company_by_id(self, company_id):
+        super()._delete_by_id(company_id)
 
     def replace_company(self, company_id):
         pass
 
-    def update_company(self, company_id):
-        pass
+    def update_company(self, company_id, key, value):
+        return super()._update(company_id, key, value)
 
-    def merge_company(self, company_id):
+    def merge_company(self, a_company, target_company_id):
+        # return super()._merge(a_company, target_company_id)
         pass
