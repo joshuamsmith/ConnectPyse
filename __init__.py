@@ -5,7 +5,7 @@ import sys
 
 sys.path.insert(0, path.dirname(path.dirname(path.abspath(__file__))))
 
-api_file = 'your_api.json'
+api_file = 'my_api.json'
 _api_file = '{}\{}'.format(path.dirname(path.abspath(__file__)), api_file)
 
 with open(_api_file) as fin:
