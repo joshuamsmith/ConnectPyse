@@ -1,65 +1,36 @@
-import restapi
+from ..cw_controller import CWController
 # Class for /system/members
-import connectpyse
 from connectpyse.system import member
 
 
-class MembersAPI(restapi.Client):
-
-    module_url = 'system'
-
+class MembersAPI(CWController):
     def __init__(self):
-        super(MembersAPI, self).__init__('{}/{}'.format(connectpyse.API_URL, MembersAPI.module_url))
+        self.module_url = 'system'
+        self.module = 'members'
+        self._class = member.Member
+        super().__init__()  # instance gets passed to parent object
 
-    def get_members(self, user_params={}):
-        json_results = self.members.get(user_headers=connectpyse.basic_auth, user_params=user_params)
-        for json in json_results:
-            yield member.Member(json)
+    def get_members(self):
+        return super()._get()
 
-    def create_member(self):
-        pass
+    def create_member(self, a_type):
+        return super()._create(a_type)
 
     def get_members_count(self):
-        json_results = self.members.get(the_id='count', user_headers=connectpyse.basic_auth)
-        count = json_results['count']
-        return count
+        return super()._get_count()
 
-    def get_member_by_id(self, member_id):
-        a_member = member.Member(self.members.get(the_id=member_id, user_headers=connectpyse.basic_auth))
-        return a_member
+    def get_member_by_id(self, type_id):
+        return super()._get_by_id(type_id)
 
-    def delete_member_by_id(self, member_id):
+    def delete_member_by_id(self, type_id):
+        super()._delete_by_id(type_id)
+
+    def replace_member(self, type_id):
         pass
 
-    def replace_member(self, member_id):
-        pass
+    def update_member(self, type_id, key, value):
+        return super()._update(type_id, key, value)
 
-    def update_member(self, member_id):
+    def merge_member(self, a_type, target_type_id):
+        # return super()._merge(a_type, target_type_id)
         pass
-
-    def merge_member(self, member_id):
-        pass
-
-# get
-# create
-# count
-# search
-# betbyid
-# delete
-# replace
-# update
-# activities
-# count
-# timeentries
-# count
-# scheduleentries
-# count
-# documents
-# count
-# products
-# count
-# configurations
-# createconfigurations
-# count
-# betbyid
-# delete
