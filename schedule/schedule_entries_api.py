@@ -1,6 +1,6 @@
 from ..cw_controller import CWController
 # Class for /schedule/entries
-from connectpyse.schedule import schedule_entry
+from schedule import schedule_entry
 
 
 class ScheduleEntriesAPI(CWController):

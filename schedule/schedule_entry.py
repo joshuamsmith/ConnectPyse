@@ -1,4 +1,4 @@
-from ..cw_model import CWModel
+from cw_model import CWModel
 
 
 class ScheduleEntry(CWModel):

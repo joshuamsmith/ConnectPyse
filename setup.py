@@ -6,7 +6,7 @@ def readme():
         return f.read()
 
 
-setup(name='connectpyse',
+setup(name='ConnectPyse',
       version='0.2',
       description='A ConnectWise API tool for the rest of us.',
       long_description=readme(),
@@ -20,7 +20,7 @@ setup(name='connectpyse',
       author='Joshua M Smith',
       author_email='saether@gmail.com',
       license='MIT',
-      packages=['connectpyse'],
+      packages=['ConnectPyse'],
       install_requires=[
           'requests',
           'ujson'
