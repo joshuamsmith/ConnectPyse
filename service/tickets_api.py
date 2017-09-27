@@ -1,43 +1,37 @@
-import restapi
 # Class for /ticket/tickets
-import connectpyse
-from connectpyse.service import ticket
+from ConnectPyse.service import ticket
 
 
-class TicketsAPI(restapi.Client):
-
-    module_url = 'service'
-
+class TicketsAPI(CWController):
     def __init__(self):
-        super(TicketsAPI, self).__init__('{}/{}'.format(connectpyse.API_URL, TicketsAPI.module_url))
+        self.module_url = 'service'
+        self.module = 'tickets'
+        self._class = ticket.Ticket
+        super().__init__()  # instance gets passed to parent object
 
-    def get_tickets(self, user_params={}):
-        json_results = self.tickets.get(user_headers=connectpyse.basic_auth, user_params=user_params)
-        for json in json_results:
-            yield ticket.Ticket(json)
+    def get_ticket_statuses(self):
+        return super()._get()
 
-    def create_ticket(self):
+    def create_ticket_status(self, a_ticket_status):
+        return super()._create(a_ticket_status)
+
+    def get_ticket_statuses_count(self):
+        return super()._get_count()
+
+    def get_ticket_status_by_id(self, ticket_status_id):
+        return super()._get_by_id(ticket_status_id)
+
+    def delete_ticket_status_by_id(self, ticket_status_id):
+        super()._delete_by_id(ticket_status_id)
+
+    def replace_ticket_status(self, ticket_status_id):
         pass
 
-    def get_tickets_count(self):
-        json_results = self.tickets.get(the_id='count', user_headers=connectpyse.basic_auth)
-        count = json_results['count']
-        return count
+    def update_ticket_status(self, ticket_id, key, value):
+        return super()._update(ticket_id, key, value)
 
-    def get_ticket_by_id(self, ticket_id):
-        a_ticket = ticket.Ticket(self.tickets.get(the_id=ticket_id, user_headers=connectpyse.basic_auth))
-        return a_ticket
-
-    def delete_ticket_by_id(self, ticket_id):
-        pass
-
-    def replace_ticket(self, ticket_id):
-        pass
-
-    def update_ticket(self, ticket_id):
-        pass
-
-    def merge_ticket(self, ticket_id):
+    def merge_ticket_status(self, a_ticket_status, target_ticket_status_id):
+        # return super()._merge(a_ticket_status, target_ticket_status_id)
         pass
 
 # get
