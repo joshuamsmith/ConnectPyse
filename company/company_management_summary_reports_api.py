@@ -1,43 +1,32 @@
-import restapi
+from ..cw_controller import CWController
 # Class for /company/companies/{id}/managementSummaryReports
-import connectpyse
-from connectpyse.company import company_management_summary_report
+from ConnectPyse.company import company_management_summary_reports
 
 
-class CompanyManagementSummaryReportsAPI(restapi.Client):
-
-    module_url = 'company/companies/{}'
-
+class CompanyManagementSummaryReportsAPI(CWController):
     def __init__(self, company_id):
-        super(CompanyManagementSummaryReportsAPI, self).__init__(
-            '{}/{}'.format(connectpyse.API_URL, CompanyManagementSummaryReportsAPI.module_url.format(company_id)))
+        self.module_url = 'company'
+        self.module = 'companies/{}/managementSummaryReports'.format(company_id)
+        self._class = company_management_summary_reports.CompanyManagementSummaryReport
+        super().__init__()  # instance gets passed to parent object
 
-    def get_company_management_summary_reports(self, user_params={}):
-        json_results = self.managementSummaryReports.get(user_headers=connectpyse.basic_auth, user_params=user_params)
-        for json in json_results:
-            yield company_management_summary_report.CompanyManagementSummaryReport(json)
+    def get_managementSummaryReports(self):
+        return super()._get()
 
-    def create_company_management_summary_report(self):
+    def create_managementSummaryReport(self, a_managementSummaryReport):
+        return super()._create(a_managementSummaryReport)
+
+    def get_managementSummaryReports_count(self):
+        return super()._get_count()
+
+    def get_managementSummaryReport_by_id(self, managementSummaryReport_id):
+        return super()._get_by_id(managementSummaryReport_id)
+
+    def delete_managementSummaryReport_by_id(self, managementSummaryReport_id):
+        super()._delete_by_id(managementSummaryReport_id)
+
+    def replace_managementSummaryReport(self, managementSummaryReport_id):
         pass
 
-    def get_company_management_summary_reports_count(self):
-        json_results = self.managementSummaryReports.get(the_id='count', user_headers=connectpyse.basic_auth)
-        count = json_results['count']
-        return count
-
-    def get_company_management_summary_report_by_id(self, company_id):
-        an_instance = company_management_summary_report.CompanyManagementSummaryReport(
-            self.managementSummaryReports.get(the_id=company_id, user_headers=connectpyse.basic_auth))
-        return an_instance
-
-    def delete_company_management_summary_report_by_id(self, company_id):
-        pass
-
-    def replace_company_management_summary_report(self, company_id):
-        pass
-
-    def update_company_management_summary_report(self, company_id):
-        pass
-
-    def merge_company_management_summary_report(self, company_id):
-        pass
+    def update_managementSummaryReport(self, managementSummaryReport_id, key, value):
+        return super()._update(managementSummaryReport_id, key, value)

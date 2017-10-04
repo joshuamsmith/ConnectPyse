@@ -1,52 +1,38 @@
-import restapi
+from ..cw_controller import CWController
 # Class for /company/contacts
-import connectpyse
 from connectpyse.company import contact
 
 
-class ContactsAPI(restapi.Client):
-
-    module_url = 'company'
-
+class ContactsAPI(CWController):
     def __init__(self):
-        super(ContactsAPI, self).__init__('{}/{}'.format(connectpyse.API_URL, ContactsAPI.module_url))
+        self.module_url = 'company'
+        self.module = 'contacts'
+        self._class = contact.Contact
+        super().__init__()  # instance gets passed to parent object
 
-    def get_contacts(self, user_params={}):
-        json_results = self.contacts.get(user_headers=connectpyse.basic_auth, user_params=user_params)
-        for json in json_results:
-            yield contact.Contact(json)
+    def get_contacts(self):
+        return super()._get()
 
-    def create_contact(self):
-        pass
+    def create_contact(self, a_contact):
+        return super()._create(a_contact)
 
     def get_contacts_count(self):
-        json_results = self.contacts.get(the_id='count', user_headers=connectpyse.basic_auth)
-        count = json_results['count']
-        return count
+        return super()._get_count()
 
     def get_contact_by_id(self, contact_id):
-        a_contact = contact.Contact(self.contacts.get(the_id=contact_id, user_headers=connectpyse.basic_auth))
-        return a_contact
+        return super()._get_by_id(contact_id)
 
     def delete_contact_by_id(self, contact_id):
-        pass
+        super()._delete_by_id(contact_id)
 
     def replace_contact(self, contact_id):
         pass
 
-    def update_contact(self, contact_id, item, value):
-        # build PatchOperation dict
-        patch_operation = [{
-            'op': 'replace',
-            'path': item,
-            'value': value
-        }]
-        # call Patch method on API
-        json_results = self.contacts.patch(the_id=contact_id, user_data=patch_operation, user_headers=connectpyse.basic_auth)
-        # return status code
-        return json_results
+    def update_contact(self, contact_id, key, value):
+        return super()._update(contact_id, key, value)
 
-    def merge_contact(self, contact_id):
+    def merge_contact(self, a_contact, target_contact_id):
+        # return super()._merge(a_contact, target_contact_id)
         pass
 
     def validate_portal_credentials(self, a_contact):
