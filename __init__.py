@@ -2,8 +2,10 @@ import base64
 import json
 from os import path
 import sys
+from .cw_controller import CWController
 
-sys.path.insert(0, path.dirname(path.dirname(path.abspath(__file__))))
+
+sys.path.insert(0, path.dirname(path.abspath(__file__)))
 
 api_file = 'my_api.json'
 _api_file = path.join(path.dirname(path.abspath(__file__)), api_file)
