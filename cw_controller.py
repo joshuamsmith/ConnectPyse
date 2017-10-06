@@ -1,9 +1,8 @@
-import restapi
 # Class for /company/companies
 import ConnectPyse
 
 
-class CWController(restapi.Client):
+class CWController(ConnectPyse.restapi.Client):
     def __init__(self):
         # self.module_url comes from child
         # self.module comes from child
