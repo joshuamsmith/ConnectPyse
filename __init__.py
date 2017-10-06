@@ -6,7 +6,7 @@ import sys
 sys.path.insert(0, path.dirname(path.dirname(path.abspath(__file__))))
 
 api_file = 'my_api.json'
-_api_file = '{}\{}'.format(path.dirname(path.abspath(__file__)), api_file)
+_api_file = path.join(path.dirname(path.abspath(__file__)), api_file)
 
 with open(_api_file) as fin:
     cw_api_settings = json.load(fin)
