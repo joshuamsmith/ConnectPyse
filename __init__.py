@@ -2,8 +2,6 @@ import base64
 import json
 from os import path
 import sys
-from .cw_controller import CWController
-
 
 sys.path.insert(0, path.dirname(path.abspath(__file__)))
 

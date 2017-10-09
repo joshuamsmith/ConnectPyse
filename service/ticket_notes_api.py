@@ -1,47 +1,37 @@
-import restapi
 # Class for /service/tickets/{id}/notes
-import connectpyse
-from connectpyse.service import ticket_note
+from .service import ticket_note
 
 
-class TicketNotesAPI(restapi.Client):
-
-    module_url = 'service/tickets/'
-
+class TicketNotesAPI(CWController):
     def __init__(self, ticket_id):
-        super(TicketNotesAPI, self).__init__('{}/{}/{}'.format(connectpyse.API_URL, TicketNotesAPI.module_url, ticket_id))
+        self.module_url = 'service'
+        self.module = 'tickets/{}/notes'.format(ticket_id)
+        self._class = ticket_note.TicketNote
+        super().__init__()  # instance gets passed to parent object
 
-    def get_ticket_notes(self, user_params={}):
-        json_results = self.notes.get(user_headers=connectpyse.basic_auth, user_params=user_params)
-        for json in json_results:
-            yield ticket_note.TicketNote(json)
+    def get_ticket_notes(self):
+        return super()._get()
 
-    def create_ticket_note(self, a_note):
-        dict_post = {'internalAnalysisFlag': a_note.internalAnalysisFlag, 'text': a_note.text,
-                     'customerUpdatedFlag': a_note.customerUpdatedFlag}
-        json_results = self.notes.post(user_data=dict_post, user_headers=connectpyse.basic_auth)
-        # status_code = json_results.status_code
-        return json_results
+    def create_ticket_note(self, a_ticket_note):
+        return super()._create(a_ticket_note)
 
     def get_ticket_notes_count(self):
-        json_results = self.notes.get(the_id='count', user_headers=connectpyse.basic_auth)
-        count = json_results['count']
-        return count
+        return super()._get_count()
 
     def get_ticket_note_by_id(self, ticket_note_id):
-        a_ticket_note = ticket_note.TicketNote(self.notes.get(the_id=ticket_note_id, user_headers=connectpyse.basic_auth))
-        return a_ticket_note
+        return super()._get_by_id(ticket_note_id)
 
     def delete_ticket_note_by_id(self, ticket_note_id):
-        pass
+        super()._delete_by_id(ticket_note_id)
 
     def replace_ticket_note(self, ticket_note_id):
         pass
 
-    def update_ticket_note(self, ticket_note_id):
-        pass
+    def update_ticket_note(self, ticket_id, key, value):
+        return super()._update(ticket_id, key, value)
 
-    def merge_ticket_note(self, ticket_note_id):
+    def merge_ticket_note(self, a_ticket_note, target_ticket_note_id):
+        # return super()._merge(a_ticket_note, target_ticket_note_id)
         pass
 
 # get

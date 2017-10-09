@@ -1,5 +1,6 @@
+from ..cw_controller import CWController
 # Class for /ticket/tickets
-from ConnectPyse.service import ticket
+from . import ticket
 
 
 class TicketsAPI(CWController):
@@ -9,29 +10,29 @@ class TicketsAPI(CWController):
         self._class = ticket.Ticket
         super().__init__()  # instance gets passed to parent object
 
-    def get_ticket_statuses(self):
+    def get_tickets(self):
         return super()._get()
 
-    def create_ticket_status(self, a_ticket_status):
-        return super()._create(a_ticket_status)
+    def create_ticket(self, a_ticket):
+        return super()._create(a_ticket)
 
-    def get_ticket_statuses_count(self):
+    def get_tickets_count(self):
         return super()._get_count()
 
-    def get_ticket_status_by_id(self, ticket_status_id):
-        return super()._get_by_id(ticket_status_id)
+    def get_ticket_by_id(self, ticket_id):
+        return super()._get_by_id(ticket_id)
 
-    def delete_ticket_status_by_id(self, ticket_status_id):
-        super()._delete_by_id(ticket_status_id)
+    def delete_ticket_by_id(self, ticket_id):
+        super()._delete_by_id(ticket_id)
 
-    def replace_ticket_status(self, ticket_status_id):
+    def replace_ticket(self, ticket_id):
         pass
 
-    def update_ticket_status(self, ticket_id, key, value):
+    def update_ticket(self, ticket_id, key, value):
         return super()._update(ticket_id, key, value)
 
-    def merge_ticket_status(self, a_ticket_status, target_ticket_status_id):
-        # return super()._merge(a_ticket_status, target_ticket_status_id)
+    def merge_ticket(self, a_ticket, target_ticket_id):
+        # return super()._merge(a_ticket, target_ticket_id)
         pass
 
 # get
