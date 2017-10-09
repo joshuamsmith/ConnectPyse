@@ -1,6 +1,6 @@
 from ..cw_controller import CWController
 # Class for /company/contacts
-from connectpyse.company import contact
+from . import contact
 
 
 class ContactsAPI(CWController):
