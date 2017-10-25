@@ -80,3 +80,15 @@ class CWController(Client):
         #                                            user_headers=basic_auth)
         # return response
         pass
+
+    def _post_dict(self, item_id, the_dict):  # TODO: test
+        # Ideally take the_item and submit that as the user_data
+        try:
+            clean_dict = {k: v for k, v in the_dict.items() if v}
+        except Exception as e:
+            print(repr(e))
+            return False
+        an_instance = self._class(
+            getattr(self, self.module).put(the_id=item_id, user_data=clean_dict, user_headers=basic_auth))
+        return an_instance
+

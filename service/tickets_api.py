@@ -54,7 +54,11 @@ class TicketsAPI(CWController):
 # products
 # count
 # configurations
-# createconfigurations
+    def create_configurations(self, ticket_id, config_dict):
+        # Create Configuration Association
+        # /service/tickets/{id}/configurations
+        # { id(Integer), deviceIdentifier(String) }
+        return super()._post_dict(ticket_id, config_dict)
 # count
 # betbyid
 # delete
