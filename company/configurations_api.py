@@ -10,24 +10,24 @@ class ConfigurationsAPI(CWController):
         self._class = configuration.Configuration
         super().__init__()  # instance gets passed to parent object
 
-    def get_companies(self):
+    def get_configurations(self):
         return super()._get()
 
-    def create_company(self, a_company):
-        return super()._create(a_company)
+    def create_configuration(self, a_configuration):
+        return super()._create(a_configuration)
 
-    def get_companies_count(self):
+    def get_configurations_count(self):
         return super()._get_count()
 
-    def get_company_by_id(self, company_id):
-        return super()._get_by_id(company_id)
+    def get_configuration_by_id(self, configuration_id):
+        return super()._get_by_id(configuration_id)
 
-    def delete_company_by_id(self, company_id):
-        super()._delete_by_id(company_id)
+    def delete_configuration_by_id(self, configuration_id):
+        super()._delete_by_id(configuration_id)
 
-    def replace_company(self, company_id):
+    def replace_configuration(self, configuration_id):
         pass
 
-    def update_company(self, company_id, key, value):
-        return super()._update(company_id, key, value)
+    def update_configuration(self, configuration_id, key, value):
+        return super()._update(configuration_id, key, value)
 
