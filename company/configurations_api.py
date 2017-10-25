@@ -1,6 +1,6 @@
 from ..cw_controller import CWController
 # Class for /company/configurations
-from connectpyse.company import configuration
+from . import configuration
 
 
 class ConfigurationsAPI(CWController):
