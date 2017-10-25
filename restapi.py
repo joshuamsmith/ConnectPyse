@@ -83,12 +83,17 @@ class Endpoint(object):
             r = resp.text
         return r
 
-    def post(self, user_data, user_params={}, user_headers={}):
+    def post(self, user_data, the_id=None, user_params={}, user_headers={}):
 
         strjsondata = ujson.dumps(user_data, ensure_ascii=False)
 
+        if the_id:
+            url = self._url(self.endpoint, the_id)
+        else:
+            url = self._url(self.endpoint)
+
         resp = req.post(
-            self._url(self.endpoint),
+            url,
             data=strjsondata,
             headers=self._headers(user_headers),
             params=self._params(user_params),

@@ -89,6 +89,6 @@ class CWController(Client):
             print(repr(e))
             return False
         an_instance = self._class(
-            getattr(self, self.module).put(the_id=item_id, user_data=clean_dict, user_headers=basic_auth))
+            getattr(self, self.module).post(the_id=item_id, user_data=clean_dict, user_headers=basic_auth))
         return an_instance
 
