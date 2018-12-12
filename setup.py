@@ -20,7 +20,7 @@ setup(name='ConnectPyse',
       author='Joshua M Smith',
       author_email='saether@gmail.com',
       license='MIT',
-      packages=['ConnectPyse'],
+      packages=['', 'system', 'company', 'finance', 'service'],
       install_requires=[
           'requests',
           'ujson'
