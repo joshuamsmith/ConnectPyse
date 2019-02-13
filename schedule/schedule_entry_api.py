@@ -1,6 +1,6 @@
 from cw_controller import CWController
 # Class for /system/members
-from schedule import schedule_entry
+from . import schedule_entry
 
 
 class ScheduleEntryAPI(CWController):

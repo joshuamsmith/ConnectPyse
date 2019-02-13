@@ -1,6 +1,6 @@
 from cw_controller import CWController
 # Class for /sales/activity
-from sales import activity
+from . import activity
 
 
 class ActivityAPI(CWController):

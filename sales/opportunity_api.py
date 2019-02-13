@@ -1,6 +1,6 @@
 from cw_controller import CWController
 # Class for /system/members
-from sales import opportunity
+from . import opportunity
 
 
 class OpportunityAPI(CWController):
