@@ -1,5 +1,5 @@
 from cw_controller import CWController
-# Class for /system/members
+# Class for /sales/opportunity
 from . import opportunity
 
 

@@ -1,5 +1,5 @@
 from cw_controller import CWController
-# Class for /system/members
+# Class for /schedule/entries
 from . import schedule_entry
 
 
