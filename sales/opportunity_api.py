@@ -10,13 +10,13 @@ class OpportunityAPI(CWController):
         self._class = opportunity.Opportunity
         super().__init__()  # instance gets passed to parent object
 
-    def get_opportunity(self):
+    def get_opportunities(self):
         return super()._get()
 
     def create_opportunity(self, a_type):
         return super()._create(a_type)
 
-    def get_opportunity_count(self):
+    def get_opportunities_count(self):
         return super()._get_count()
 
     def get_opportunity_by_id(self, type_id):

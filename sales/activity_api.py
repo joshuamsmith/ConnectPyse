@@ -16,7 +16,7 @@ class ActivityAPI(CWController):
     def create_activity(self, a_type):
         return super()._create(a_type)
 
-    def get_activity_count(self):
+    def get_activities_count(self):
         return super()._get_count()
 
     def get_activity_by_id(self, type_id):
