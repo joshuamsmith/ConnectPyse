@@ -91,3 +91,5 @@ ENV/
 #custom
 .idea/
 my_api.json
+/.project
+/.pydevproject

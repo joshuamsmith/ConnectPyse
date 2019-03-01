@@ -8,7 +8,7 @@
 
 
 import requests as req
-import ujson
+import json
 
 
 class EndpointError(AttributeError):
@@ -85,7 +85,7 @@ class Endpoint(object):
 
     def post(self, user_data, the_id=None, user_params={}, user_headers={}):
 
-        strjsondata = ujson.dumps(user_data, ensure_ascii=False)
+        strjsondata = json.dumps(user_data, ensure_ascii=False)
 
         if the_id:
             url = self._url(self.endpoint, the_id)
@@ -111,7 +111,7 @@ class Endpoint(object):
 
     def put(self, the_id, user_data, user_params={}, user_headers={}):
 
-        strjsondata = ujson.dumps(user_data, ensure_ascii=False)
+        strjsondata = json.dumps(user_data, ensure_ascii=False)
 
         resp = req.put(
             self._url(self.endpoint, the_id),
@@ -131,7 +131,7 @@ class Endpoint(object):
 
     def patch(self, the_id, user_data, user_params={}, user_headers={}):
 
-        strjsondata = ujson.dumps(user_data, ensure_ascii=False)
+        strjsondata = json.dumps(user_data, ensure_ascii=False)
 
         resp = req.patch(
             self._url(self.endpoint, the_id),

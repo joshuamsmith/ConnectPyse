@@ -6,7 +6,7 @@ from . import opportunity
 class OpportunityAPI(CWController):
     def __init__(self):
         self.module_url = 'sales'
-        self.module = 'opportunity'
+        self.module = 'opportunities'
         self._class = opportunity.Opportunity
         super().__init__()  # instance gets passed to parent object
 

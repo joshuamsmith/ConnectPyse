@@ -23,7 +23,7 @@ setup(name='ConnectPyse',
       packages=['', 'system', 'company', 'finance', 'service'],
       install_requires=[
           'requests',
-          'ujson'
+          'json'
       ],
       include_package_data=True,
       zip_safe=False)

@@ -1,6 +1,6 @@
 # Parent class for module controller classes
-from ConnectPyse import API_URL, basic_auth
-from .restapi import Client
+from cw_info import API_URL, basic_auth
+from restapi import Client
 
 
 class CWController(Client):
@@ -54,7 +54,7 @@ class CWController(Client):
 
     def _replace(self, item_id):  # TODO: test
         an_instance = self._class(
-            getattr(self, self.module).put(the_id=item_id, user_data=clean_dict, user_headers=basic_auth))
+            getattr(self, self.module).put(the_id=item_id, user_data=self.clean_dict, user_headers=basic_auth))
         return an_instance
 
     def _update(self, item_id, key, value):

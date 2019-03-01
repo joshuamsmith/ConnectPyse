@@ -6,7 +6,7 @@ from . import activity
 class ActivityAPI(CWController):
     def __init__(self):
         self.module_url = 'sales'
-        self.module = 'activity'
+        self.module = 'activities'
         self._class = activity.Activity
         super().__init__()  # instance gets passed to parent object
 
