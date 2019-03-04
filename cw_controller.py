@@ -1,6 +1,6 @@
 # Parent class for module controller classes
-from cw_info import API_URL, basic_auth
-from restapi import Client
+from .config import API_URL, basic_auth
+from .restapi import Client
 
 
 class CWController(Client):

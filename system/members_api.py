@@ -1,6 +1,6 @@
 from ..cw_controller import CWController
 # Class for /system/members
-from system import member
+from connectpyse.system import member
 
 
 class MembersAPI(CWController):

@@ -1,6 +1,6 @@
 from ..cw_controller import CWController
 # Class for /schedule/types
-from schedule import schedule_type
+from connectpyse.schedule import schedule_type
 
 
 class ScheduleTypesAPI(CWController):

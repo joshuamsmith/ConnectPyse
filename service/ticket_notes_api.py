@@ -1,5 +1,6 @@
+from ..cw_controller import CWController
 # Class for /service/tickets/{id}/notes
-from .service import ticket_note
+from connectpyse.service import ticket_note
 
 
 class TicketNotesAPI(CWController):

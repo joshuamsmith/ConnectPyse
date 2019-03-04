@@ -1,4 +1,4 @@
-from cw_controller import CWController
+from ..cw_controller import CWController
 # Class for /sales/activity
 from . import activity
 

@@ -1,4 +1,4 @@
-import restapi
+from connectpyse import restapi
 # Class for /company/agreements
 from connectpyse.finance import agreement
 
