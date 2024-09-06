@@ -1,3 +1,5 @@
+# PLEASE NOTE: THIS PROJECT IS NO LONGER MAINTAINED - please check out one of the forks!! #
+
 # ConnectPyse
 ConnectWise (Manage) REST API client written in Python 3.x
 
